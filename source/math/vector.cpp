@@ -73,3 +73,94 @@ void Vector::zero()
     );
 }
 
+Vector Vector::operator+(const Vector& other) const
+{
+    if (size() != other.size())
+    {
+        throw std::invalid_argument("Vector sizes do not match.");
+    }
+
+    Vector result(size());
+
+    for (size_t i = 0; i < size(); ++i)
+    {
+        result.data_[i] = data_[i] + other.data_[i];
+    }
+
+    return result;
+}
+
+Vector Vector::operator-(const Vector& other) const
+{
+    if (size() != other.size())
+    {
+        throw std::invalid_argument("Vector sizes do not match.");
+    }
+
+    Vector result(size());
+
+    for (size_t i = 0; i < size(); ++i)
+    {
+        result.data_[i] = data_[i] - other.data_[i];
+    }
+
+    return result;
+}
+
+Vector Vector::operator*(float scalar) const
+{
+    Vector result(size());
+
+    for (size_t i = 0; i < size(); ++i)
+    {
+        result.data_[i] = data_[i] * scalar;
+    }
+
+    return result;
+}
+
+Vector& Vector::operator+=(const Vector& other)
+{
+    if (size() != other.size())
+    {
+        throw std::invalid_argument("Vector sizes do not match.");
+    }
+
+    for (size_t i = 0; i < size(); ++i)
+    {
+        data_[i] += other.data_[i];
+    }
+
+    return *this;
+}
+
+Vector& Vector::operator-=(const Vector& other)
+{
+    if (size() != other.size())
+    {
+        throw std::invalid_argument("Vector sizes do not match.");
+    }
+
+    for (size_t i = 0; i < size(); ++i)
+    {
+        data_[i] -= other.data_[i];
+    }
+
+    return *this;
+}
+
+Vector& Vector::operator*=(float scalar)
+{
+    for (float& value : data_)
+    {
+        value *= scalar;
+    }
+
+    return *this;
+}
+
+Vector operator*(float scalar, const Vector& vector)
+{
+    return vector * scalar;
+}
+

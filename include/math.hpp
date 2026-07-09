@@ -20,6 +20,16 @@ public:
     float& operator[](size_t index);
     const float& operator[](size_t index) const;
 
+    Vector operator+(const Vector& other) const;
+    Vector operator-(const Vector& other) const;
+    Vector operator*(float scalar) const;
+
+    Vector& operator+=(const Vector& other);
+    Vector& operator-=(const Vector& other);
+    Vector& operator*=(float scalar);
+
+    friend Vector operator*(float scalar, const Vector& vector);
+
     float dot(const Vector& other) const;
     float sum() const;
 
