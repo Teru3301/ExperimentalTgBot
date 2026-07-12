@@ -12,7 +12,6 @@
 /[Dd]ebug/
 /[Rr]elease/
 *.out
-app
 *.app
 
 *.i
